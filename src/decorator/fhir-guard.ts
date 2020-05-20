@@ -39,7 +39,7 @@ function FhirGuard4PropertyDecorator<T>(target: any, key: string) {
     }
 
     // property setter
-    const setter = function (newVal) {
+    const setter = function (newVal: any) {
         // console.log(`Set: ${key} => ${newVal}`)
         _val = newVal
     }
