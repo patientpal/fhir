@@ -28,8 +28,11 @@
     "url": "https://github.com/patientpal/fhir/issues"
   },
   "homepage": "https://github.com/patientpal/fhir#readme",
-  "keywords": [],
+  "keywords": ["fhir", "types"],
   "license": "GPLv3",
+  "engines": {
+    "node": ">=8.10.0"
+  },
   "dependencies": {
     "io-ts": "<2.0.0",
     "reflect-metadata": "^0.1.13"

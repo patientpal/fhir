@@ -82,10 +82,10 @@ export interface IPatient extends IDomainResource {
   extension?: IExtension[]
 
   /**
-                     * May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
-
-Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).
-                     */
+   * May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+   *
+   * Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).
+   */
   modifierExtension?: IExtension[]
 
   /**
@@ -94,13 +94,12 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
   identifier?: IIdentifier[]
 
   /**
-                     * Whether this patient record is in active use.
-Many systems use this property to mark as non-current patients, such as those that have not been seen for a period of time based on an organization's business rules.
-
-It is often used to filter patient lists to exclude inactive patients
-
-Deceased patients may also be marked as inactive for the same reasons, but may be active for some time after death.
-                     */
+   * Whether this patient record is in active use.
+   *
+   * Many systems use this property to mark as non-current patients, such as those that have not been seen for a period of time based on an organization's business rules.
+   * It is often used to filter patient lists to exclude inactive patients
+   * Deceased patients may also be marked as inactive for the same reasons, but may be active for some time after death.
+   */
   active?: boolean
 
   /**
