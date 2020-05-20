@@ -17,7 +17,7 @@
     "build": "tsc",
     "test": "jest",
     "clean": "rimraf lib/*",
-    "publish-me": "npm run clean && npm version patch && tsc -p . && npm publish",
+    "prepublishOnly": "npm run build",
     "lint": "tslint -c tslint.json 'src/**/*.ts'"
   },
   "repository": {
