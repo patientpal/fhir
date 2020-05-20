@@ -1,37 +1,70 @@
 {
-  "name": "@ahryman40k/ts-fhir-types",
-  "version": "4.0.24",
-  "description": "",
+  "name": "@patientpal/fhir",
+  "version": "0.0.1",
+  "description": "TypeScript typings and utilities for FHIR v4.0.1",
+  "author": {
+    "name": "Benjamin Hutchins",
+    "email": "ben@hutchins.co"
+  },
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "prepare": "npm run build",
+    "prebuild": "check-engine && rm -rf dist",
     "build": "tsc",
     "test": "jest",
     "clean": "rimraf lib/*",
     "publish-me": "npm run clean && npm version patch && tsc -p . && npm publish",
-    "publish-coverage": "codecov --token=50ac9b8a-5b64-40a3-bac5-721272f90c71"
+    "lint": "tslint -c tslint.json 'src/**/*.ts'"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:Ahryman40k/typescript-fhir-types.git"
+    "url": "git+https://github.com/patientpal/fhir.git"
   },
+  "bugs": {
+    "url": "https://github.com/patientpal/fhir/issues"
+  },
+  "homepage": "https://github.com/patientpal/fhir#readme",
   "keywords": [],
   "license": "GPLv3",
-  "devDependencies": {
-    "@types/jest": "^25.1.0",
-    "@types/node": "^13.5.0",
-    "codecov": "^3.6.2",
-    "jest": "^25.1.0",
-    "rimraf": "^3.0.1",
-    "ts-jest": "^25.0.0",
-    "typescript": "^3.7.5"
-  },
-  "files": [
-    "lib"
-  ],
   "dependencies": {
     "io-ts": "<2.0.0",
     "reflect-metadata": "^0.1.13"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/git": "^9.0.0",
+    "@types/jest": "^25.1.0",
+    "@types/node": "^13.5.0",
+    "check-engine": "^1.8.1",
+    "codecov": "^3.6.2",
+    "husky": "^4.2.5",
+    "jest": "^25.1.0",
+    "rimraf": "^3.0.1",
+    "semantic-release": "^17.0.7",
+    "ts-jest": "^25.0.0",
+    "tslint": "^6.1.2",
+    "typescript": "^3.7.5"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   }
 }

@@ -1,609 +1,609 @@
-import * as t from 'io-ts';
-import { RTTI_Extension, IExtension } from './RTTI_Extension';
-import { RTTI_id } from '../Scalar/RTTI_id';
-import { RTTI_Element, IElement } from './RTTI_Element';
-import { RTTI_integer } from '../Scalar/RTTI_integer';
-import { RTTI_Address, IAddress } from './RTTI_Address';
-import { RTTI_Age, IAge } from './RTTI_Age';
-import { RTTI_Annotation, IAnnotation } from './RTTI_Annotation';
-import { RTTI_Attachment, IAttachment } from './RTTI_Attachment';
-import { RTTI_CodeableConcept, ICodeableConcept } from './RTTI_CodeableConcept';
-import { RTTI_Coding, ICoding } from './RTTI_Coding';
-import { RTTI_ContactPoint, IContactPoint } from './RTTI_ContactPoint';
-import { RTTI_Count, ICount } from './RTTI_Count';
-import { RTTI_Distance, IDistance } from './RTTI_Distance';
-import { RTTI_Duration, IDuration } from './RTTI_Duration';
-import { RTTI_HumanName, IHumanName } from './RTTI_HumanName';
-import { RTTI_Identifier, IIdentifier } from './RTTI_Identifier';
-import { RTTI_Money, IMoney } from './RTTI_Money';
-import { RTTI_Period, IPeriod } from './RTTI_Period';
-import { RTTI_Quantity, IQuantity } from './RTTI_Quantity';
-import { RTTI_Range, IRange } from './RTTI_Range';
-import { RTTI_Ratio, IRatio } from './RTTI_Ratio';
-import { RTTI_Reference, IReference } from './RTTI_Reference';
-import { RTTI_SampledData, ISampledData } from './RTTI_SampledData';
-import { RTTI_Signature, ISignature } from './RTTI_Signature';
-import { RTTI_Timing, ITiming } from './RTTI_Timing';
-import { RTTI_ContactDetail, IContactDetail } from './RTTI_ContactDetail';
-import { RTTI_Contributor, IContributor } from './RTTI_Contributor';
-import { RTTI_DataRequirement, IDataRequirement } from './RTTI_DataRequirement';
-import { RTTI_Expression, IExpression } from './RTTI_Expression';
+import * as t from 'io-ts'
+import { RTTI_id } from '../Scalar/RTTI_id'
+import { RTTI_integer } from '../Scalar/RTTI_integer'
+import { IAddress, RTTI_Address } from './RTTI_Address'
+import { IAge, RTTI_Age } from './RTTI_Age'
+import { IAnnotation, RTTI_Annotation } from './RTTI_Annotation'
+import { IAttachment, RTTI_Attachment } from './RTTI_Attachment'
+import { ICodeableConcept, RTTI_CodeableConcept } from './RTTI_CodeableConcept'
+import { ICoding, RTTI_Coding } from './RTTI_Coding'
+import { IContactDetail, RTTI_ContactDetail } from './RTTI_ContactDetail'
+import { IContactPoint, RTTI_ContactPoint } from './RTTI_ContactPoint'
+import { IContributor, RTTI_Contributor } from './RTTI_Contributor'
+import { ICount, RTTI_Count } from './RTTI_Count'
+import { IDataRequirement, RTTI_DataRequirement } from './RTTI_DataRequirement'
+import { IDistance, RTTI_Distance } from './RTTI_Distance'
+import { IDosage, RTTI_Dosage } from './RTTI_Dosage'
+import { IDuration, RTTI_Duration } from './RTTI_Duration'
+import { IElement, RTTI_Element } from './RTTI_Element'
+import { IExpression, RTTI_Expression } from './RTTI_Expression'
+import { IExtension, RTTI_Extension } from './RTTI_Extension'
+import { IHumanName, RTTI_HumanName } from './RTTI_HumanName'
+import { IIdentifier, RTTI_Identifier } from './RTTI_Identifier'
+import { IMoney, RTTI_Money } from './RTTI_Money'
 import {
-	RTTI_ParameterDefinition,
-	IParameterDefinition
-} from './RTTI_ParameterDefinition';
-import { RTTI_RelatedArtifact, IRelatedArtifact } from './RTTI_RelatedArtifact';
+  IParameterDefinition,
+  RTTI_ParameterDefinition,
+} from './RTTI_ParameterDefinition'
+import { IPeriod, RTTI_Period } from './RTTI_Period'
+import { IQuantity, RTTI_Quantity } from './RTTI_Quantity'
+import { IRange, RTTI_Range } from './RTTI_Range'
+import { IRatio, RTTI_Ratio } from './RTTI_Ratio'
+import { IReference, RTTI_Reference } from './RTTI_Reference'
+import { IRelatedArtifact, RTTI_RelatedArtifact } from './RTTI_RelatedArtifact'
+import { ISampledData, RTTI_SampledData } from './RTTI_SampledData'
+import { ISignature, RTTI_Signature } from './RTTI_Signature'
+import { ITiming, RTTI_Timing } from './RTTI_Timing'
 import {
-	RTTI_TriggerDefinition,
-	ITriggerDefinition
-} from './RTTI_TriggerDefinition';
-import { RTTI_UsageContext, IUsageContext } from './RTTI_UsageContext';
-import { RTTI_Dosage, IDosage } from './RTTI_Dosage';
+  ITriggerDefinition,
+  RTTI_TriggerDefinition,
+} from './RTTI_TriggerDefinition'
+import { IUsageContext, RTTI_UsageContext } from './RTTI_UsageContext'
 export enum StructureMap_SourceListModeKind {
-	_first = 'first',
-	_notFirst = 'not_first',
-	_last = 'last',
-	_notLast = 'not_last',
-	_onlyOne = 'only_one'
+  _first = 'first',
+  _notFirst = 'not_first',
+  _last = 'last',
+  _notLast = 'not_last',
+  _onlyOne = 'only_one',
 }
-import { createEnumType } from '../../EnumType';
+import { createEnumType } from '../../EnumType'
 
 export interface IStructureMap_Source {
-	/**
+  /**
 	 * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
 	 */
-	id?: string;
+  id?: string
 
-	/**
+  /**
 	 * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
 	 */
-	extension?: IExtension[];
+  extension?: IExtension[]
 
-	/**
+  /**
                      * May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
 
 Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).
                      */
-	modifierExtension?: IExtension[];
+  modifierExtension?: IExtension[]
 
-	/**
+  /**
 	 * Type or variable this rule applies to.
 	 */
-	context?: string;
+  context?: string
 
-	/**
+  /**
 	 * Extensions for context
 	 */
-	_context?: IElement;
+  _context?: IElement
 
-	/**
+  /**
 	 * Specified minimum cardinality for the element. This is optional; if present, it acts an implicit check on the input content.
 	 */
-	min?: number;
+  min?: number
 
-	/**
+  /**
 	 * Extensions for min
 	 */
-	_min?: IElement;
+  _min?: IElement
 
-	/**
+  /**
 	 * Specified maximum cardinality for the element - a number or a "*". This is optional; if present, it acts an implicit check on the input content (* just serves as documentation; it's the default value).
 	 */
-	max?: string;
+  max?: string
 
-	/**
+  /**
 	 * Extensions for max
 	 */
-	_max?: IElement;
+  _max?: IElement
 
-	/**
+  /**
 	 * Specified type for the element. This works as a condition on the mapping - use for polymorphic elements.
 	 */
-	type?: string;
+  type?: string
 
-	/**
+  /**
 	 * Extensions for type
 	 */
-	_type?: IElement;
+  _type?: IElement
 
-	/**
+  /**
 	 * A value to use if there is no existing value in the source object.
 	 */
-	defaultValueBase64Binary?: string;
+  defaultValueBase64Binary?: string
 
-	/**
+  /**
 	 * Extensions for defaultValueBase64Binary
 	 */
-	_defaultValueBase64Binary?: IElement;
+  _defaultValueBase64Binary?: IElement
 
-	/**
+  /**
 	 * A value to use if there is no existing value in the source object.
 	 */
-	defaultValueBoolean?: boolean;
+  defaultValueBoolean?: boolean
 
-	/**
+  /**
 	 * Extensions for defaultValueBoolean
 	 */
-	_defaultValueBoolean?: IElement;
+  _defaultValueBoolean?: IElement
 
-	/**
+  /**
 	 * A value to use if there is no existing value in the source object.
 	 */
-	defaultValueCanonical?: string;
+  defaultValueCanonical?: string
 
-	/**
+  /**
 	 * Extensions for defaultValueCanonical
 	 */
-	_defaultValueCanonical?: IElement;
+  _defaultValueCanonical?: IElement
 
-	/**
+  /**
 	 * A value to use if there is no existing value in the source object.
 	 */
-	defaultValueCode?: string;
+  defaultValueCode?: string
 
-	/**
+  /**
 	 * Extensions for defaultValueCode
 	 */
-	_defaultValueCode?: IElement;
+  _defaultValueCode?: IElement
 
-	/**
+  /**
 	 * A value to use if there is no existing value in the source object.
 	 */
-	defaultValueDate?: string;
+  defaultValueDate?: string
 
-	/**
+  /**
 	 * Extensions for defaultValueDate
 	 */
-	_defaultValueDate?: IElement;
+  _defaultValueDate?: IElement
 
-	/**
+  /**
 	 * A value to use if there is no existing value in the source object.
 	 */
-	defaultValueDateTime?: string;
+  defaultValueDateTime?: string
 
-	/**
+  /**
 	 * Extensions for defaultValueDateTime
 	 */
-	_defaultValueDateTime?: IElement;
+  _defaultValueDateTime?: IElement
 
-	/**
+  /**
 	 * A value to use if there is no existing value in the source object.
 	 */
-	defaultValueDecimal?: number;
+  defaultValueDecimal?: number
 
-	/**
+  /**
 	 * Extensions for defaultValueDecimal
 	 */
-	_defaultValueDecimal?: IElement;
+  _defaultValueDecimal?: IElement
 
-	/**
+  /**
 	 * A value to use if there is no existing value in the source object.
 	 */
-	defaultValueId?: string;
+  defaultValueId?: string
 
-	/**
+  /**
 	 * Extensions for defaultValueId
 	 */
-	_defaultValueId?: IElement;
+  _defaultValueId?: IElement
 
-	/**
+  /**
 	 * A value to use if there is no existing value in the source object.
 	 */
-	defaultValueInstant?: string;
+  defaultValueInstant?: string
 
-	/**
+  /**
 	 * Extensions for defaultValueInstant
 	 */
-	_defaultValueInstant?: IElement;
+  _defaultValueInstant?: IElement
 
-	/**
+  /**
 	 * A value to use if there is no existing value in the source object.
 	 */
-	defaultValueInteger?: number;
+  defaultValueInteger?: number
 
-	/**
+  /**
 	 * Extensions for defaultValueInteger
 	 */
-	_defaultValueInteger?: IElement;
+  _defaultValueInteger?: IElement
 
-	/**
+  /**
 	 * A value to use if there is no existing value in the source object.
 	 */
-	defaultValueMarkdown?: string;
+  defaultValueMarkdown?: string
 
-	/**
+  /**
 	 * Extensions for defaultValueMarkdown
 	 */
-	_defaultValueMarkdown?: IElement;
+  _defaultValueMarkdown?: IElement
 
-	/**
+  /**
 	 * A value to use if there is no existing value in the source object.
 	 */
-	defaultValueOid?: string;
+  defaultValueOid?: string
 
-	/**
+  /**
 	 * Extensions for defaultValueOid
 	 */
-	_defaultValueOid?: IElement;
+  _defaultValueOid?: IElement
 
-	/**
+  /**
 	 * A value to use if there is no existing value in the source object.
 	 */
-	defaultValuePositiveInt?: number;
+  defaultValuePositiveInt?: number
 
-	/**
+  /**
 	 * Extensions for defaultValuePositiveInt
 	 */
-	_defaultValuePositiveInt?: IElement;
+  _defaultValuePositiveInt?: IElement
 
-	/**
+  /**
 	 * A value to use if there is no existing value in the source object.
 	 */
-	defaultValueString?: string;
+  defaultValueString?: string
 
-	/**
+  /**
 	 * Extensions for defaultValueString
 	 */
-	_defaultValueString?: IElement;
+  _defaultValueString?: IElement
 
-	/**
+  /**
 	 * A value to use if there is no existing value in the source object.
 	 */
-	defaultValueTime?: string;
+  defaultValueTime?: string
 
-	/**
+  /**
 	 * Extensions for defaultValueTime
 	 */
-	_defaultValueTime?: IElement;
+  _defaultValueTime?: IElement
 
-	/**
+  /**
 	 * A value to use if there is no existing value in the source object.
 	 */
-	defaultValueUnsignedInt?: number;
+  defaultValueUnsignedInt?: number
 
-	/**
+  /**
 	 * Extensions for defaultValueUnsignedInt
 	 */
-	_defaultValueUnsignedInt?: IElement;
+  _defaultValueUnsignedInt?: IElement
 
-	/**
+  /**
 	 * A value to use if there is no existing value in the source object.
 	 */
-	defaultValueUri?: string;
+  defaultValueUri?: string
 
-	/**
+  /**
 	 * Extensions for defaultValueUri
 	 */
-	_defaultValueUri?: IElement;
+  _defaultValueUri?: IElement
 
-	/**
+  /**
 	 * A value to use if there is no existing value in the source object.
 	 */
-	defaultValueUrl?: string;
+  defaultValueUrl?: string
 
-	/**
+  /**
 	 * Extensions for defaultValueUrl
 	 */
-	_defaultValueUrl?: IElement;
+  _defaultValueUrl?: IElement
 
-	/**
+  /**
 	 * A value to use if there is no existing value in the source object.
 	 */
-	defaultValueUuid?: string;
+  defaultValueUuid?: string
 
-	/**
+  /**
 	 * Extensions for defaultValueUuid
 	 */
-	_defaultValueUuid?: IElement;
+  _defaultValueUuid?: IElement
 
-	/**
+  /**
 	 * A value to use if there is no existing value in the source object.
 	 */
-	defaultValueAddress?: IAddress;
+  defaultValueAddress?: IAddress
 
-	/**
+  /**
 	 * A value to use if there is no existing value in the source object.
 	 */
-	defaultValueAge?: IAge;
+  defaultValueAge?: IAge
 
-	/**
+  /**
 	 * A value to use if there is no existing value in the source object.
 	 */
-	defaultValueAnnotation?: IAnnotation;
+  defaultValueAnnotation?: IAnnotation
 
-	/**
+  /**
 	 * A value to use if there is no existing value in the source object.
 	 */
-	defaultValueAttachment?: IAttachment;
+  defaultValueAttachment?: IAttachment
 
-	/**
+  /**
 	 * A value to use if there is no existing value in the source object.
 	 */
-	defaultValueCodeableConcept?: ICodeableConcept;
+  defaultValueCodeableConcept?: ICodeableConcept
 
-	/**
+  /**
 	 * A value to use if there is no existing value in the source object.
 	 */
-	defaultValueCoding?: ICoding;
+  defaultValueCoding?: ICoding
 
-	/**
+  /**
 	 * A value to use if there is no existing value in the source object.
 	 */
-	defaultValueContactPoint?: IContactPoint;
+  defaultValueContactPoint?: IContactPoint
 
-	/**
+  /**
 	 * A value to use if there is no existing value in the source object.
 	 */
-	defaultValueCount?: ICount;
+  defaultValueCount?: ICount
 
-	/**
+  /**
 	 * A value to use if there is no existing value in the source object.
 	 */
-	defaultValueDistance?: IDistance;
+  defaultValueDistance?: IDistance
 
-	/**
+  /**
 	 * A value to use if there is no existing value in the source object.
 	 */
-	defaultValueDuration?: IDuration;
+  defaultValueDuration?: IDuration
 
-	/**
+  /**
 	 * A value to use if there is no existing value in the source object.
 	 */
-	defaultValueHumanName?: IHumanName;
+  defaultValueHumanName?: IHumanName
 
-	/**
+  /**
 	 * A value to use if there is no existing value in the source object.
 	 */
-	defaultValueIdentifier?: IIdentifier;
+  defaultValueIdentifier?: IIdentifier
 
-	/**
+  /**
 	 * A value to use if there is no existing value in the source object.
 	 */
-	defaultValueMoney?: IMoney;
+  defaultValueMoney?: IMoney
 
-	/**
+  /**
 	 * A value to use if there is no existing value in the source object.
 	 */
-	defaultValuePeriod?: IPeriod;
+  defaultValuePeriod?: IPeriod
 
-	/**
+  /**
 	 * A value to use if there is no existing value in the source object.
 	 */
-	defaultValueQuantity?: IQuantity;
+  defaultValueQuantity?: IQuantity
 
-	/**
+  /**
 	 * A value to use if there is no existing value in the source object.
 	 */
-	defaultValueRange?: IRange;
+  defaultValueRange?: IRange
 
-	/**
+  /**
 	 * A value to use if there is no existing value in the source object.
 	 */
-	defaultValueRatio?: IRatio;
+  defaultValueRatio?: IRatio
 
-	/**
+  /**
 	 * A value to use if there is no existing value in the source object.
 	 */
-	defaultValueReference?: IReference;
+  defaultValueReference?: IReference
 
-	/**
+  /**
 	 * A value to use if there is no existing value in the source object.
 	 */
-	defaultValueSampledData?: ISampledData;
+  defaultValueSampledData?: ISampledData
 
-	/**
+  /**
 	 * A value to use if there is no existing value in the source object.
 	 */
-	defaultValueSignature?: ISignature;
+  defaultValueSignature?: ISignature
 
-	/**
+  /**
 	 * A value to use if there is no existing value in the source object.
 	 */
-	defaultValueTiming?: ITiming;
+  defaultValueTiming?: ITiming
 
-	/**
+  /**
 	 * A value to use if there is no existing value in the source object.
 	 */
-	defaultValueContactDetail?: IContactDetail;
+  defaultValueContactDetail?: IContactDetail
 
-	/**
+  /**
 	 * A value to use if there is no existing value in the source object.
 	 */
-	defaultValueContributor?: IContributor;
+  defaultValueContributor?: IContributor
 
-	/**
+  /**
 	 * A value to use if there is no existing value in the source object.
 	 */
-	defaultValueDataRequirement?: IDataRequirement;
+  defaultValueDataRequirement?: IDataRequirement
 
-	/**
+  /**
 	 * A value to use if there is no existing value in the source object.
 	 */
-	defaultValueExpression?: IExpression;
+  defaultValueExpression?: IExpression
 
-	/**
+  /**
 	 * A value to use if there is no existing value in the source object.
 	 */
-	defaultValueParameterDefinition?: IParameterDefinition;
+  defaultValueParameterDefinition?: IParameterDefinition
 
-	/**
+  /**
 	 * A value to use if there is no existing value in the source object.
 	 */
-	defaultValueRelatedArtifact?: IRelatedArtifact;
+  defaultValueRelatedArtifact?: IRelatedArtifact
 
-	/**
+  /**
 	 * A value to use if there is no existing value in the source object.
 	 */
-	defaultValueTriggerDefinition?: ITriggerDefinition;
+  defaultValueTriggerDefinition?: ITriggerDefinition
 
-	/**
+  /**
 	 * A value to use if there is no existing value in the source object.
 	 */
-	defaultValueUsageContext?: IUsageContext;
+  defaultValueUsageContext?: IUsageContext
 
-	/**
+  /**
 	 * A value to use if there is no existing value in the source object.
 	 */
-	defaultValueDosage?: IDosage;
+  defaultValueDosage?: IDosage
 
-	/**
+  /**
 	 * Optional field for this source.
 	 */
-	element?: string;
+  element?: string
 
-	/**
+  /**
 	 * Extensions for element
 	 */
-	_element?: IElement;
+  _element?: IElement
 
-	/**
+  /**
 	 * How to handle the list mode for this element.
 	 */
-	listMode?: StructureMap_SourceListModeKind;
+  listMode?: StructureMap_SourceListModeKind
 
-	/**
+  /**
 	 * Extensions for listMode
 	 */
-	_listMode?: IElement;
+  _listMode?: IElement
 
-	/**
+  /**
 	 * Named context for field, if a field is specified.
 	 */
-	variable?: string;
+  variable?: string
 
-	/**
+  /**
 	 * Extensions for variable
 	 */
-	_variable?: IElement;
+  _variable?: IElement
 
-	/**
+  /**
 	 * FHIRPath expression  - must be true or the rule does not apply.
 	 */
-	condition?: string;
+  condition?: string
 
-	/**
+  /**
 	 * Extensions for condition
 	 */
-	_condition?: IElement;
+  _condition?: IElement
 
-	/**
+  /**
 	 * FHIRPath expression  - must be true or the mapping engine throws an error instead of completing.
 	 */
-	check?: string;
+  check?: string
 
-	/**
+  /**
 	 * Extensions for check
 	 */
-	_check?: IElement;
+  _check?: IElement
 
-	/**
+  /**
 	 * A FHIRPath expression which specifies a message to put in the transform log when content matching the source rule is found.
 	 */
-	logMessage?: string;
+  logMessage?: string
 
-	/**
+  /**
 	 * Extensions for logMessage
 	 */
-	_logMessage?: IElement;
+  _logMessage?: IElement
 }
 
 export const RTTI_StructureMap_Source: t.Type<
-	IStructureMap_Source
+  IStructureMap_Source
 > = t.recursion('IStructureMap_Source', () =>
-	t.partial({
-		id: t.string,
-		extension: t.array(RTTI_Extension),
-		modifierExtension: t.array(RTTI_Extension),
-		context: RTTI_id,
-		_context: RTTI_Element,
-		min: RTTI_integer,
-		_min: RTTI_Element,
-		max: t.string,
-		_max: RTTI_Element,
-		type: t.string,
-		_type: RTTI_Element,
-		defaultValueBase64Binary: t.string,
-		_defaultValueBase64Binary: RTTI_Element,
-		defaultValueBoolean: t.boolean,
-		_defaultValueBoolean: RTTI_Element,
-		defaultValueCanonical: t.string,
-		_defaultValueCanonical: RTTI_Element,
-		defaultValueCode: t.string,
-		_defaultValueCode: RTTI_Element,
-		defaultValueDate: t.string,
-		_defaultValueDate: RTTI_Element,
-		defaultValueDateTime: t.string,
-		_defaultValueDateTime: RTTI_Element,
-		defaultValueDecimal: t.number,
-		_defaultValueDecimal: RTTI_Element,
-		defaultValueId: t.string,
-		_defaultValueId: RTTI_Element,
-		defaultValueInstant: t.string,
-		_defaultValueInstant: RTTI_Element,
-		defaultValueInteger: t.number,
-		_defaultValueInteger: RTTI_Element,
-		defaultValueMarkdown: t.string,
-		_defaultValueMarkdown: RTTI_Element,
-		defaultValueOid: t.string,
-		_defaultValueOid: RTTI_Element,
-		defaultValuePositiveInt: t.number,
-		_defaultValuePositiveInt: RTTI_Element,
-		defaultValueString: t.string,
-		_defaultValueString: RTTI_Element,
-		defaultValueTime: t.string,
-		_defaultValueTime: RTTI_Element,
-		defaultValueUnsignedInt: t.number,
-		_defaultValueUnsignedInt: RTTI_Element,
-		defaultValueUri: t.string,
-		_defaultValueUri: RTTI_Element,
-		defaultValueUrl: t.string,
-		_defaultValueUrl: RTTI_Element,
-		defaultValueUuid: t.string,
-		_defaultValueUuid: RTTI_Element,
-		defaultValueAddress: RTTI_Address,
-		defaultValueAge: RTTI_Age,
-		defaultValueAnnotation: RTTI_Annotation,
-		defaultValueAttachment: RTTI_Attachment,
-		defaultValueCodeableConcept: RTTI_CodeableConcept,
-		defaultValueCoding: RTTI_Coding,
-		defaultValueContactPoint: RTTI_ContactPoint,
-		defaultValueCount: RTTI_Count,
-		defaultValueDistance: RTTI_Distance,
-		defaultValueDuration: RTTI_Duration,
-		defaultValueHumanName: RTTI_HumanName,
-		defaultValueIdentifier: RTTI_Identifier,
-		defaultValueMoney: RTTI_Money,
-		defaultValuePeriod: RTTI_Period,
-		defaultValueQuantity: RTTI_Quantity,
-		defaultValueRange: RTTI_Range,
-		defaultValueRatio: RTTI_Ratio,
-		defaultValueReference: RTTI_Reference,
-		defaultValueSampledData: RTTI_SampledData,
-		defaultValueSignature: RTTI_Signature,
-		defaultValueTiming: RTTI_Timing,
-		defaultValueContactDetail: RTTI_ContactDetail,
-		defaultValueContributor: RTTI_Contributor,
-		defaultValueDataRequirement: RTTI_DataRequirement,
-		defaultValueExpression: RTTI_Expression,
-		defaultValueParameterDefinition: RTTI_ParameterDefinition,
-		defaultValueRelatedArtifact: RTTI_RelatedArtifact,
-		defaultValueTriggerDefinition: RTTI_TriggerDefinition,
-		defaultValueUsageContext: RTTI_UsageContext,
-		defaultValueDosage: RTTI_Dosage,
-		element: t.string,
-		_element: RTTI_Element,
-		listMode: createEnumType<StructureMap_SourceListModeKind>(
-			StructureMap_SourceListModeKind,
-			'StructureMap_SourceListModeKind'
-		),
-		_listMode: RTTI_Element,
-		variable: RTTI_id,
-		_variable: RTTI_Element,
-		condition: t.string,
-		_condition: RTTI_Element,
-		check: t.string,
-		_check: RTTI_Element,
-		logMessage: t.string,
-		_logMessage: RTTI_Element
-	})
-);
+  t.partial({
+    id: t.string,
+    extension: t.array(RTTI_Extension),
+    modifierExtension: t.array(RTTI_Extension),
+    context: RTTI_id,
+    _context: RTTI_Element,
+    min: RTTI_integer,
+    _min: RTTI_Element,
+    max: t.string,
+    _max: RTTI_Element,
+    type: t.string,
+    _type: RTTI_Element,
+    defaultValueBase64Binary: t.string,
+    _defaultValueBase64Binary: RTTI_Element,
+    defaultValueBoolean: t.boolean,
+    _defaultValueBoolean: RTTI_Element,
+    defaultValueCanonical: t.string,
+    _defaultValueCanonical: RTTI_Element,
+    defaultValueCode: t.string,
+    _defaultValueCode: RTTI_Element,
+    defaultValueDate: t.string,
+    _defaultValueDate: RTTI_Element,
+    defaultValueDateTime: t.string,
+    _defaultValueDateTime: RTTI_Element,
+    defaultValueDecimal: t.number,
+    _defaultValueDecimal: RTTI_Element,
+    defaultValueId: t.string,
+    _defaultValueId: RTTI_Element,
+    defaultValueInstant: t.string,
+    _defaultValueInstant: RTTI_Element,
+    defaultValueInteger: t.number,
+    _defaultValueInteger: RTTI_Element,
+    defaultValueMarkdown: t.string,
+    _defaultValueMarkdown: RTTI_Element,
+    defaultValueOid: t.string,
+    _defaultValueOid: RTTI_Element,
+    defaultValuePositiveInt: t.number,
+    _defaultValuePositiveInt: RTTI_Element,
+    defaultValueString: t.string,
+    _defaultValueString: RTTI_Element,
+    defaultValueTime: t.string,
+    _defaultValueTime: RTTI_Element,
+    defaultValueUnsignedInt: t.number,
+    _defaultValueUnsignedInt: RTTI_Element,
+    defaultValueUri: t.string,
+    _defaultValueUri: RTTI_Element,
+    defaultValueUrl: t.string,
+    _defaultValueUrl: RTTI_Element,
+    defaultValueUuid: t.string,
+    _defaultValueUuid: RTTI_Element,
+    defaultValueAddress: RTTI_Address,
+    defaultValueAge: RTTI_Age,
+    defaultValueAnnotation: RTTI_Annotation,
+    defaultValueAttachment: RTTI_Attachment,
+    defaultValueCodeableConcept: RTTI_CodeableConcept,
+    defaultValueCoding: RTTI_Coding,
+    defaultValueContactPoint: RTTI_ContactPoint,
+    defaultValueCount: RTTI_Count,
+    defaultValueDistance: RTTI_Distance,
+    defaultValueDuration: RTTI_Duration,
+    defaultValueHumanName: RTTI_HumanName,
+    defaultValueIdentifier: RTTI_Identifier,
+    defaultValueMoney: RTTI_Money,
+    defaultValuePeriod: RTTI_Period,
+    defaultValueQuantity: RTTI_Quantity,
+    defaultValueRange: RTTI_Range,
+    defaultValueRatio: RTTI_Ratio,
+    defaultValueReference: RTTI_Reference,
+    defaultValueSampledData: RTTI_SampledData,
+    defaultValueSignature: RTTI_Signature,
+    defaultValueTiming: RTTI_Timing,
+    defaultValueContactDetail: RTTI_ContactDetail,
+    defaultValueContributor: RTTI_Contributor,
+    defaultValueDataRequirement: RTTI_DataRequirement,
+    defaultValueExpression: RTTI_Expression,
+    defaultValueParameterDefinition: RTTI_ParameterDefinition,
+    defaultValueRelatedArtifact: RTTI_RelatedArtifact,
+    defaultValueTriggerDefinition: RTTI_TriggerDefinition,
+    defaultValueUsageContext: RTTI_UsageContext,
+    defaultValueDosage: RTTI_Dosage,
+    element: t.string,
+    _element: RTTI_Element,
+    listMode: createEnumType<StructureMap_SourceListModeKind>(
+      StructureMap_SourceListModeKind,
+      'StructureMap_SourceListModeKind',
+    ),
+    _listMode: RTTI_Element,
+    variable: RTTI_id,
+    _variable: RTTI_Element,
+    condition: t.string,
+    _condition: RTTI_Element,
+    check: t.string,
+    _check: RTTI_Element,
+    logMessage: t.string,
+    _logMessage: RTTI_Element,
+  }),
+)

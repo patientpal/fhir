@@ -1,42 +1,42 @@
+import * as fs from 'fs'
 import * as t from 'io-ts'
-import * as fs from 'fs';
-import * as path from 'path';
+import * as path from 'path'
 
 import {
-    RTTI_Account, 
-    RTTI_AdverseEvent, 
-    RTTI_AllergyIntolerance, 
-    RTTI_AppointmentResponse, 
-    RTTI_Appointment, 
+    RTTI_Account,
+    RTTI_ActivityDefinition,
+    RTTI_AdverseEvent,
+    RTTI_AllergyIntolerance,
+    RTTI_Appointment,
+    RTTI_AppointmentResponse,
     RTTI_AuditEvent,
-    RTTI_Basic, 
-    RTTI_Binary, 
-    RTTI_CapabilityStatement, 
-    RTTI_Bundle, 
-    RTTI_CarePlan, 
+    RTTI_Basic,
+    RTTI_Binary,
+    RTTI_BiologicallyDerivedProduct,
+    RTTI_BodyStructure,
+    RTTI_Bundle,
+    RTTI_CapabilityStatement,
+    RTTI_CarePlan,
+    RTTI_CareTeam,
     RTTI_CatalogEntry,
-    RTTI_Claim, 
-    RTTI_ActivityDefinition, 
-    RTTI_CodeSystem, 
-    RTTI_BodyStructure, 
-    RTTI_BiologicallyDerivedProduct, 
-    RTTI_CareTeam, 
-    RTTI_ChargeItem, 
-    RTTI_ChargeItemDefinition, 
-    RTTI_ClaimResponse, 
-    RTTI_ClinicalImpression, 
-    RTTI_Communication, 
-    RTTI_CommunicationRequest, 
-    RTTI_CompartmentDefinition, 
-    RTTI_Composition, 
-    RTTI_ConceptMap, 
-    RTTI_Condition, 
-    RTTI_Consent, 
-    RTTI_Contract, 
-    RTTI_Coverage, 
-    RTTI_CoverageEligibilityRequest, 
-    RTTI_CoverageEligibilityResponse, 
-    RTTI_DetectedIssue, 
+    RTTI_ChargeItem,
+    RTTI_ChargeItemDefinition,
+    RTTI_Claim,
+    RTTI_ClaimResponse,
+    RTTI_ClinicalImpression,
+    RTTI_CodeSystem,
+    RTTI_Communication,
+    RTTI_CommunicationRequest,
+    RTTI_CompartmentDefinition,
+    RTTI_Composition,
+    RTTI_ConceptMap,
+    RTTI_Condition,
+    RTTI_Consent,
+    RTTI_Contract,
+    RTTI_Coverage,
+    RTTI_CoverageEligibilityRequest,
+    RTTI_CoverageEligibilityResponse,
+    RTTI_DetectedIssue,
     RTTI_Device,
     RTTI_DeviceDefinition,
     RTTI_DeviceMetric,
@@ -105,8 +105,8 @@ import {
     RTTI_Organization,
     RTTI_OrganizationAffiliation,
     RTTI_ParameterDefinition,
-    RTTI_Parameters_Parameter,
     RTTI_Parameters,
+    RTTI_Parameters_Parameter,
     RTTI_Patient,
     RTTI_PaymentNotice,
     RTTI_PaymentReconciliation,
@@ -145,8 +145,8 @@ import {
     RTTI_TestScript,
     RTTI_ValueSet,
     RTTI_VerificationResult,
-    RTTI_VisionPrescription
-} from '../R4/Resource';
+    RTTI_VisionPrescription,
+} from '../R4/Resource'
 
 const cases = [
     ['Account', RTTI_Account],
@@ -289,9 +289,9 @@ const cases = [
     ['TestScript', RTTI_TestScript],
     ['ValueSet', RTTI_ValueSet],
     ['VerificationResult', RTTI_VerificationResult],
-    ['VisionPrescription', RTTI_VisionPrescription]
+    ['VisionPrescription', RTTI_VisionPrescription],
 
-];
+]
 
 
 describe.each<any>(cases)(
@@ -302,12 +302,12 @@ describe.each<any>(cases)(
             return [
                 f,
                 fs.readFileSync(path.join(__dirname, `samples/${domain}`, f), 'utf8'),
-                RTTI
+                RTTI,
             ]
-        });
+        })
 
-        test.each(filesContent)(`should decode file %s`, (filename, fileContent, RTTI) => {
-            const result = RTTI.decode(JSON.parse(fileContent));
-            expect(result._tag).toBe('Right');
+        test.each(filesContent)(`should decode file %s`, (filename, fileContent, RTTIType) => {
+            const result = RTTIType.decode(JSON.parse(fileContent))
+            expect(result._tag).toBe('Right')
         })
     })

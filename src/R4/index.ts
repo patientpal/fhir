@@ -1,4 +1,4 @@
-export { RTTI_ResourceList, IResourceList } from './Union';
+export { RTTI_ResourceList, IResourceList } from './Union'
 
 export {
     RTTI_base64Binary,
@@ -18,8 +18,8 @@ export {
     RTTI_uri,
     RTTI_url,
     RTTI_uuid,
-    RTTI_xhtml
-} from './Scalar';
+    RTTI_xhtml,
+} from './Scalar'
 
 
 export {
